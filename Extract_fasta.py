@@ -22,3 +22,5 @@ class Fasta_extract :
                     act_line += seq
         sequence_list.append(act_line) 
         return sequence_list[1:len(sequence_list)]
+
+
