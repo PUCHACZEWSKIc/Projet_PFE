@@ -1,0 +1,50 @@
+=============================================avancements/remarques=============================================
+
+-----------------------------------------------a faire currently:----------------------------------------------
+-Faire un aligneur par rapport à la séquence type donnée par Jalview en reprenant les cours de l'an dernier 
+-Voir si et comment les VM de la fac peuvent tenir les données complètes de génomes viraux
+
+------------------------------------------------------fait:----------------------------------------------------
+-fct qui extract les sequences des génomes
+
+
+
+
+
+
+
+
+
+
+===================================================consigne:===================================================
+Auteur: Mikaël Salson (mikael.salson@univ-lille.fr)
+
+Algorithme incrémental d'alignement multiple pour 3 millions de génomes de SARS-CoV-2
+
+----------------------------------------------------Contexte--------------------------------------------------
+Il existe depuis très longtemps de nombreux outils afin de calculer un alignement multiple entre des séquences 
+(nucléiques ou protéiques). Néanmoins, on ne dispose pas à l'heure actuelle d'outil adapté lorsqu'il s'agit de 
+faire un alignement multiple entre un très grand nombre de séquences très hautement similaires. C'est pourtant 
+la situation qui se présente si on souhaite faire un alignement multiple entre les 3 millions de génomes de 
+SARS-CoV-2 actuellement disponibles dans les banques de données publiques.
+
+---------------------------------------------------Objectifs---------------------------------------------------
+Le travail consistera :
+
+- visualiser un alignement multiple de 10 000 génomes du SARS-CoV-2 qui a déjà été calculé;
+- récupérer la totalité des génomes de SARS-CoV-2 disponibles publiquement ;
+- étudier, pour chaque génome, le pourcentage de k-mers communs avec une séquence consensus obtenue sur 
+  l'alignement des 10 000 génomes, pour différentes valeurs de k ;
+- mettre en œuvre (en Python ou C++) un algorithme incrémental à base de k-mers pour ajouter une séquence à 
+  l'alignement multiple :
+
+remarque:
+- la séquence consensus, ainsi que le nombre de chaque nucléotide à chaque position de l'alignement multiple sont 
+  conservés en mémoire ;
+- on utilise des k-mers de grande taille (taille à déterminer en fonction des résultats du point 3), communs 
+  entre le génome à ajouter et la séquence consensus afin de fixer des ancres dans l'alignement multiple ;
+- les k-mers qui ne sont pas localisés peuvent être dus à des mutations ponctuelles facilement identifiables avec
+  les k-mers seuls, à défaut on utilisera de l'alignement 2 à 2 uniquement entre les régions où les k-mers ne sont
+  d'aucun secours, afin de résoudre le problème ;
+- dans certaines situations, il pourrait être nécessaire d'ajouter des gaps dans la séquence consensus, ce qui 
+  aura pour effet de décaler un certain nombre d'informations.
