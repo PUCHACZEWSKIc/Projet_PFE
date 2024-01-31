@@ -22,6 +22,16 @@ class align :
         for seq in self.__seq_list :
             test = parasail.nw_trace_scan(seq, self.__seq_cons, 10, 1, parasail.dnafull) #On utilise parasail pour aligner nos séquences. 
             traceback = test.get_traceback().query #On récupère la séquence alignée et on la stocke dans une nouvelle liste
+            print(traceback)
             align_list.append(traceback)
         return align_list
 
+from Extract_fasta import Fasta_extract
+
+file = Fasta_extract('sequences_SARS-CoV-2_ech.fasta')
+seq_list = file.sequences()
+
+print(seq_list[0])
+
+aligneur = align(seq_cons, seq_list)
+aligneur.align()
