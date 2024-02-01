@@ -3,6 +3,11 @@
 -----------------------------------------------a faire currently:----------------------------------------------
 -Faire un aligneur par rapport à la séquence type donnée par Jalview en reprenant les cours de l'an dernier 
 -Voir si et comment les VM de la fac peuvent tenir les données complètes de génomes viraux
+1-Regarder comment se servir de haligne.
+2-Voir comment upload, download et se servir d'une VM en général
+3-Séparer le fichier des séquences filtrés (Que Salson nous enverra), ou au moins faire le script qui permet de le faire (Utiliser un échantillon de NCBI au pire)
+4-Regarder comment utiliser Snakemake.
+
 
 ------------------------------------------------------fait:----------------------------------------------------
 -fct qui extract les sequences des génomes
