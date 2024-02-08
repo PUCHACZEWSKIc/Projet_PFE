@@ -1,7 +1,7 @@
 from Extract_fasta import Fasta_extract
-
 import numpy as np
 import matplotlib.pyplot as plt
+import textwrap
 
 
 class SequenceAnalyser:
@@ -10,9 +10,9 @@ class SequenceAnalyser:
 		self.list_sequences = list_sequences
 
 	@staticmethod
-	def kmers_from_sequence(sequence, k):
+	def kmers_from_sequence(sequence, k, step=1):
 		kmers = []
-		for i in range(0, len(sequence)):
+		for i in range(0, len(sequence), step):
 			kmer = sequence[i:i + k]
 			if len(kmer) == k:
 				kmers.append(kmer)
@@ -42,14 +42,21 @@ class SequenceAnalyser:
 	def build_graph_pourcentage_communs(self, pourcentages_list, list_k_sizes, title):
 		moyennes = [np.mean(p) for p in pourcentages_list]
 		ecarts_types = [np.std(p) for p in pourcentages_list]
+		mininum = [min(p) for p in pourcentages_list]
+		maximum = [max(p) for p in pourcentages_list]
 
-		plt.plot(list_k_sizes, moyennes)
+		plt.plot(list_k_sizes, moyennes, label="Moyenne")
 		plt.fill_between(list_k_sizes, np.array(moyennes) - np.array(ecarts_types),
-		                 np.array(moyennes) + np.array(ecarts_types), color='blue', alpha=0.2)
+		                 np.array(moyennes) + np.array(ecarts_types), color='blue', alpha=0.2, label="Écart-type")
+		plt.plot(list_k_sizes, mininum, color='r', linestyle='--', label="Min & Max")
+		plt.plot(list_k_sizes, maximum, color='r', linestyle='--')
 
-		plt.title("Moyenne des Pourcentages d'Identité par Taille de k-mer avec Écart Type")
+		fig_title = textwrap.fill("Pourcentages d'identité de k-mer entre un échantillon de séquences et la séquence "
+		                      "consensus en fonction de k", width=70)
+		plt.title(fig_title)
 		plt.xlabel("Taille de k-mer")
-		plt.ylabel("Moyenne des Pourcentages d'Identité")
+		plt.ylabel("Pourcentage d'identité")
+		plt.legend()
 
 		plt.savefig(title)
 		plt.close()
