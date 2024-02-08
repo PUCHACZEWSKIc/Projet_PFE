@@ -27,7 +27,7 @@ class Fasta_extract :
         self.__sequence_list = sequence_list[1:len(sequence_list)]
         return sequence_list[1:len(sequence_list)]
 
-    def sequences_packages(self, pack_size) : #Cette fonction permet de récupérer les séquences et de les dispatcher dans un dossier "sequences_packages" en des fichiers contenant "pack_size" sequences
+    def sequences_packages(self, pack_size = 1000) : #Cette fonction permet de récupérer les séquences et de les dispatcher dans un dossier "sequences_packages" en des fichiers contenant "pack_size" sequences
         if not os.path.exists("sequences_packages"):
             os.makedirs("sequences_packages") #On vérifie si le dossier d'acceuil existe, et si non, on le créé
         nbr_seq = 1
