@@ -1,0 +1,11 @@
+Doc scripts : 
+
+Extract_fasta.py : 
+Permet de récupérer les séquences d'un fichier fasta et de les parser. Permet aussi de les séparers en paquet de taille à définir (1000 séquences par défaut)
+Permet également d'ajouter de nouvelles séquences à un groupe de paquet existant. 
+
+  Paramètres du script : 
+    -add_new_sequence, -n : y ou n; permet de définir si on veut ajouter des séquences à un groupe de paquet déjà existant (par défaut : n)
+    -input, -i : chemin d'accès du fichier contenant les séquences (obligatoire)
+    -pack_size, -ps : taille des paquets que l'on veut créer (int). Inutile lors de l'ajout de séquences à un groupe de paquets déjà existant.
+    
