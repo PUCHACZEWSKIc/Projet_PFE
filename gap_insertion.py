@@ -28,7 +28,7 @@ def align_oldcons_cons(cons, compopos) :
                 change = i
         if change != -1 :
             compopos.insert(change, [0, 0, 0, 0, 2, 0])
-    return compopos 
+    return compopos #La fonction renvoie la composition mise à jour.
 
 
 
