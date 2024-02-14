@@ -21,16 +21,13 @@ def deter_cons(list_compo) :
 
 def align_oldcons_cons(cons, compopos) : 
     #Cette fonction permet d'ajouter les gaps de la séquence consensus dans les listes de composition de séquences
-    old_cons = old_cons_reconstruction(compopos) 
-    par = parasail.nw_trace_scan(old_cons, cons, 10, 1, parasail.dnafull) #On utilise parasail pour aligner les séquences consensus finale et intermédiaires, pour savoir où insérer nos gaps.
-    traceback = par.get_traceback().query 
-    while len(compopos) != len(traceback) : #On stocke les positions de changement et à chacun on rajoute un gap. On s'arrête que la composition et la consensus finale font la même taille.
+    while len(compopos) != len(cons) : #On stocke les positions de changement et à chacun on rajoute un gap. On s'arrête que la composition et la consensus finale font la même taille.
         change = -1
         for i in range(len(compopos)) : 
-            if deter_cons(compopos[i]) !=  "-" and traceback[i] == "-" : 
+            if deter_cons(compopos[i]) !=  "-" and cons[i] == "-" : 
                 change = i
         if change != -1 :
-            compopos.insert(change-1, [0, 0, 0, 0, 2, 0])
+            compopos.insert(change, [0, 0, 0, 0, 2, 0])
     return compopos 
 
 
