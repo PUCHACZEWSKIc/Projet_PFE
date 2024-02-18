@@ -36,7 +36,7 @@ if __name__ == "__main__" :
         fasta_int_infile = "sequences_packages_align/aligned_pack_" + str(subfile) + ".fasta"
         command_cons = "python3 compo_calc.py " + fasta_int_infile + " sequences_packages_compo/compo_" + str(subfile) + ".csv sequences_packages_cons/cons_" + str(subfile) + ".fasta"
         subprocess.run(command_cons, shell = True, executable = "/bin/bash")
-    subprocess.run("rm -rd sequences_packages", shell = True, executable = "/bin/bash")
+    
     
     list_cons = glob.glob("sequences_packages_cons/cons_*.fasta")
     list_cons_str = []
