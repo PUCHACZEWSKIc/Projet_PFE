@@ -19,16 +19,13 @@ class Fasta_extract :
                 if seq == "" : 
                     pass
                 elif seq[0] == '>' : #Ici, "if" et "elif" on pour but de passer les lignes vides et les intitulés de séquences. 
-                    if act_line != "" :
-                        sequence_list.append(act_line) #Si l'on trouve un intitulé de séquence, c'est que la séquence précédente est terminée, on l'ajoute donc à notre liste finale.
-                        act_line = ''
-                    else : 
-                        pass
+                    sequence_list.append(act_line) #Si l'on trouve un intitulé de séquence, c'est que la séquence précédente est terminée, on l'ajoute donc à notre liste finale.
+                    act_line = ''
                 else :
                     act_line += seq
         sequence_list.append(act_line) 
         self.sequence_list = sequence_list[1:len(sequence_list)]
-        return sequence_list[1:len(sequence_list)]
+        return sequence_list
 
     def sequences_packages(self, pack_size = 1000) : #Cette fonction permet de récupérer les séquences et de les dispatcher dans un dossier "sequences_packages" en des fichiers contenant "pack_size" sequences
         if not os.path.exists("sequences_packages"):
@@ -71,15 +68,6 @@ class Fasta_extract :
             nbr_seq += 1
             nbr_pack += 1
 
-#file = Fasta_extract('sequences_20240202_4425212.fasta') #Test sur un fichier dont le compte de séquence n'est pas rond (237)
-#file.sequences()
-#file.sequences_packages(100)
-
-#Pensez à supprimer les fichiers dans le dossier recevant entre les deux test.
-
-#file = Fasta_extract('sequences_20240202_4425212.fasta') #Test sur un fichier dont le compte de séquence est rond (200)
-#file.sequences()
-#file.sequences_packages(100)
             
 if __name__ == "__main__"  : 
     arg_manager = argparse.ArgumentParser()

@@ -72,6 +72,7 @@ if __name__ == "__main__" :
             else : 
                 compt += 1
     
+
     subprocess.run("rm -rd sequences_packages_compo", shell = True, executable = "/bin/bash")
 
     command_cons = "python3 compo_calc.py consensus_align.fasta compo_all_cons.csv cons_all_cons.fasta"
