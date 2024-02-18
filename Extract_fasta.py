@@ -19,8 +19,11 @@ class Fasta_extract :
                 if seq == "" : 
                     pass
                 elif seq[0] == '>' : #Ici, "if" et "elif" on pour but de passer les lignes vides et les intitulés de séquences. 
-                    sequence_list.append(act_line) #Si l'on trouve un intitulé de séquence, c'est que la séquence précédente est terminée, on l'ajoute donc à notre liste finale.
-                    act_line = ''
+                    if act_line != "" :
+                        sequence_list.append(act_line) #Si l'on trouve un intitulé de séquence, c'est que la séquence précédente est terminée, on l'ajoute donc à notre liste finale.
+                        act_line = ''
+                    else : 
+                        pass
                 else :
                     act_line += seq
         sequence_list.append(act_line) 
