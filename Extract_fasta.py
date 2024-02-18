@@ -24,7 +24,7 @@ class Fasta_extract :
                 else :
                     act_line += seq
         sequence_list.append(act_line) 
-        self.__sequence_list = sequence_list[1:len(sequence_list)]
+        self.sequence_list = sequence_list[1:len(sequence_list)]
         return sequence_list[1:len(sequence_list)]
 
     def sequences_packages(self, pack_size = 1000) : #Cette fonction permet de récupérer les séquences et de les dispatcher dans un dossier "sequences_packages" en des fichiers contenant "pack_size" sequences
@@ -32,16 +32,16 @@ class Fasta_extract :
             os.makedirs("sequences_packages") #On vérifie si le dossier d'acceuil existe, et si non, on le créé
         nbr_seq = 1
         nbr_pack = 0
-        while nbr_seq-1 != len(self.__sequence_list) : #Cette boucle permet de créer plusieurs fichiers, tant qu'on a pas atteint la fin de la liste.
+        while nbr_seq-1 != len(self.sequence_list) : #Cette boucle permet de créer plusieurs fichiers, tant qu'on a pas atteint la fin de la liste.
             title = "sequences_packages/pack_" + str(nbr_pack) + ".fasta" #On définit le titre du fichier actuel
             with open(title, 'a') as fileOut : 
                 while nbr_seq%pack_size != 0 : #Tant qu'on a pas remplis le fichier avec le nombre exact de séquences, on continue
-                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.__sequence_list[nbr_seq-1] + '\n\n')
+                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.sequence_list[nbr_seq-1] + '\n\n')
                     nbr_seq += 1
-                    if nbr_seq == len(self.__sequence_list) : #Si on tombe sur la fin de seq_list à ce moment là, on arrête tout.
+                    if nbr_seq == len(self.sequence_list) : #Si on tombe sur la fin de seq_list à ce moment là, on arrête tout.
                         break 
                 with open(title, 'a') as fileOut : #Pour éviter de sauter une séquence lorsque le fichier est plein, on y rajoute la dernière séquence (la dernière séquence a un rapport nbr_seq%pack_size de 0 )
-                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.__sequence_list[nbr_seq-1] + '\n\n') 
+                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.sequence_list[nbr_seq-1] + '\n\n') 
             nbr_seq += 1
             nbr_pack += 1
 
@@ -55,16 +55,16 @@ class Fasta_extract :
                     pack_size += 1
         nbr_seq = 1 #À partir d'ici, le code est quasi identique à celui de sequences_packages.
         nbr_pack = len(list_fichier) #Avecle nombre de fichier on définit le nouveau point de départ de nos n° de fichier
-        while nbr_seq-1 != len(self.__sequence_list) : #Cette boucle permet de créer plusieurs fichiers, tant qu'on a pas atteint la fin de la liste.
+        while nbr_seq-1 != len(self.sequence_list) : #Cette boucle permet de créer plusieurs fichiers, tant qu'on a pas atteint la fin de la liste.
             title = "sequences_packages/pack_" + str(nbr_pack) + ".fasta" #On définit le titre du fichier actuel
             with open(title, 'a') as fileOut : 
                 while nbr_seq%pack_size != 0 : #Tant qu'on a pas remplis le fichier avec le nombre exact de séquences, on continue
-                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.__sequence_list[nbr_seq-1] + '\n\n')
+                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.sequence_list[nbr_seq-1] + '\n\n')
                     nbr_seq += 1
-                    if nbr_seq == len(self.__sequence_list) : #Si on tombe sur la fin de seq_list à ce moment là, on arrête tout.
+                    if nbr_seq == len(self.sequence_list) : #Si on tombe sur la fin de seq_list à ce moment là, on arrête tout.
                         break 
                 with open(title, 'a') as fileOut : #Pour éviter de sauter une séquence lorsque le fichier est plein, on y rajoute la dernière séquence (la dernière séquence a un rapport nbr_seq%pack_size de 0 )
-                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.__sequence_list[nbr_seq-1] + '\n\n') 
+                    fileOut.write(">seq n°" + str(nbr_seq) + "\n" + self.sequence_list[nbr_seq-1] + '\n\n') 
             nbr_seq += 1
             nbr_pack += 1
 
