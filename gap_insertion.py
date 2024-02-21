@@ -6,7 +6,7 @@ class Gap_Insertion :
 
     def deter_cons(self, list_compo) : 
         #Cette fonction permet de trouver quel est le nucléotide majoritaire à partir d'une liste de leur proportions. 
-        COMPO = ["A", "C", "G", "T", "-", "N"]
+        COMPO = ["A", "C", "G", "T", "N", "-"]
         nucl = 0
         hprop = 0
         for prop in range(len(list_compo)) : 
@@ -24,7 +24,7 @@ class Gap_Insertion :
                 if self.deter_cons(compopos[:,i]) !=  "-" and cons[i] == "-" : 
                     change = i
             if change != -1 :
-                compopos = np.insert(compopos, change, [0, 0, 0, 0, 2, 0], axis = 1)
+                compopos = np.insert(compopos, change, [0, 0, 0, 0, 0, 2], axis = 1)
         return compopos #La fonction renvoie la composition mise à jour.
     
     def fusion(self, list_compopos) : 
